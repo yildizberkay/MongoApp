@@ -1,6 +1,8 @@
 from sys import path as sys_path
 from Tkinter import *
-import subprocess, ttk, threading
+import subprocess
+import ttk
+import threading
 
 sys_path.append('libs')
 from PIL import ImageTk, Image
