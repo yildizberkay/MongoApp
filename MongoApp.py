@@ -21,7 +21,7 @@ class MongoApp():
         self.CreateQuery()
 
     def CreateQuery(self):
-        self.MongoQuery =  ' --pidfilepath '+str(self.pidPath)+' --maxConns ' + str(self.maxConns) + ' --dbpath ' + str(self.dbpath)
+        self.MongoQuery = ' --pidfilepath '+str(self.pidPath)+' --maxConns ' + str(self.maxConns) + ' --dbpath ' + str(self.dbpath)
         if self.noauth == 1:
             self.MongoQuery = self.MongoQuery + ' --noauth'
 
@@ -102,7 +102,7 @@ class Application(Frame):
             self.IconPanel.config(image=self.ErrorIconImage)
             self.AppendLog("Error!\n", 'ErrorHead')
             self.AppendLog("Mongo DB is not working, please check console log.\n", 'NotificationHead')
-        self.AppendLog("--------------------------------------------------\n",'NotificationHead')
+        self.AppendLog("--------------------------------------------------\n", 'NotificationHead')
 
     def StartServerMulti(self):
         self.StartButton["state"] = DISABLED
@@ -124,7 +124,7 @@ class Application(Frame):
     def CreateWidgets(self):
         self.StartButton = Button(self)
         self.StartButton["text"] = "Start Mongo"
-        self.StartButton["fg"]   = "red"
+        self.StartButton["fg"] = "red"
         self.StartButton["command"] = self.StartServerMulti
         self.StartButton.pack({"side": "left"})
 
