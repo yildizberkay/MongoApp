@@ -9,6 +9,7 @@ from PIL import ImageTk, Image
 import tkFont
 import webbrowser
 
+
 class MongoApp():
 
     pidPath = 'logs/mongo.pid'
@@ -32,6 +33,7 @@ class MongoApp():
     def Start(self):
         SM = threading.Thread(target=self.StartMongo, args=())
         SM.start()
+
 
 # Application structure: http://docs.python.org/2/library/tkinter.html#a-simple-hello-world-program
 class Application(Frame):
@@ -60,7 +62,6 @@ class Application(Frame):
 
         MenuRoot.add_cascade(label="About MongoApp", menu=MenuBar)
         master.config(menu=MenuRoot)
-
 
         self.CreateWidgets()
         master.protocol("WM_DELETE_WINDOW", self.QuitEvent)
