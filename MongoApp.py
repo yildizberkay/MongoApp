@@ -45,7 +45,7 @@ class Application(Frame):
         self.pack(expand=0, fill='both', padx=10, pady=10)
         self.ConsoleLogFrame = Frame(master)
         self.ConsoleLogFrame.pack(expand=1, fill='both')
-        
+
         self.ActiveIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-active.gif"))
         self.ErrorIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-error.gif"))
         self.OffIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-off.gif"))
@@ -57,10 +57,10 @@ class Application(Frame):
         MenuBar = Menu(MenuRoot, tearoff=0)
         MenuBar.add_command(label="GitHub Page", command=self.LinkGitHubPage)
         MenuBar.add_command(label="MongoDB Docs", command=self.LinkMongoDBDocs)
-        
+
         MenuRoot.add_cascade(label="About MongoApp", menu=MenuBar)
         master.config(menu=MenuRoot)
-    
+
 
         self.CreateWidgets()
         master.protocol("WM_DELETE_WINDOW", self.QuitEvent)
@@ -167,7 +167,7 @@ class Application(Frame):
             self.LogArea.insert(END, logline)
         else:
             self.LogArea.insert(END, logline, (tag))
-        self.LogArea.see('end') 
+        self.LogArea.see('end')
 
     def QuitEvent(self):
         if self.Status == 1:
