@@ -11,7 +11,7 @@ class MongoApp():
 
     pidPath = 'logs/mongo.pid'
 
-    def __init__(self, maxConns = 10, dbpath = 'data/db', noauth = 1):
+    def __init__(self, maxConns=10, dbpath='data/db', noauth=1):
         self.maxConns = maxConns
         self.dbpath = dbpath
         self.noauth = noauth
@@ -34,7 +34,7 @@ class MongoApp():
 # Application structure: http://docs.python.org/2/library/tkinter.html#a-simple-hello-world-program
 class Application(Frame):
 
-    Mongo = MongoApp(maxConns = 100)
+    Mongo = MongoApp(maxConns=100)
     Status = 0
 
     def __init__(self, master=None):
@@ -80,13 +80,13 @@ class Application(Frame):
             self.AppendLog(Line)
 
             if str(self.MongoObject.poll()) == 'None':
-                self.IconPanel.config(image = self.ActiveIconImage)
+                self.IconPanel.config(image=self.ActiveIconImage)
                 self.Status = 1
                 SStatus = 1
             elif str(self.MongoObject.poll()) == '100':
                 SStatus = 0
             else:
-                self.IconPanel.config(image = self.OffIconImage)
+                self.IconPanel.config(image=self.OffIconImage)
 
             if not Line:
                 break
@@ -96,7 +96,7 @@ class Application(Frame):
         if SStatus == 0:
             self.StopButton["state"] = DISABLED
             self.StartButton["state"] = NORMAL
-            self.IconPanel.config(image = self.ErrorIconImage)
+            self.IconPanel.config(image=self.ErrorIconImage)
             self.AppendLog("Error!\n", 'ErrorHead')
             self.AppendLog("Mongo DB is not working, please check console log.\n", 'NotificationHead')
         self.AppendLog("--------------------------------------------------\n",'NotificationHead')
@@ -141,11 +141,11 @@ class Application(Frame):
         self.OpenFolder["command"] = self.OpenDBFolder
         self.OpenFolder.pack({"side": "left"})
 
-        self.PoweredMongoPanel = Label(self, image = self.MongoDBLogo)
+        self.PoweredMongoPanel = Label(self, image=self.MongoDBLogo)
         self.PoweredMongoPanel.image = self.MongoDBLogo
         self.PoweredMongoPanel.pack({"side": "right"})
 
-        self.IconPanel = Label(self, image = self.OffIconImage)
+        self.IconPanel = Label(self, image=self.OffIconImage)
         self.IconPanel.image = self.OffIconImage
         self.IconPanel.pack({"side": "right"})
 
@@ -160,7 +160,7 @@ class Application(Frame):
         self.LogArea.tag_config("NotificationHead", background="#f1c40f", foreground="#2c3e50")
         self.LogArea.tag_config("ErrorHead", background="#e74c3c", foreground="#ffffff", font=tkFont.Font(weight='bold'))
 
-    def AppendLog(self, logline, tag = 'None'):
+    def AppendLog(self, logline, tag='None'):
         if tag == 'None':
             self.LogArea.insert(END, logline)
         else:
