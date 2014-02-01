@@ -21,13 +21,18 @@ class MongoApp():
         self.CreateQuery()
 
     def CreateQuery(self):
-        self.MongoQuery = ' --pidfilepath '+str(self.pidPath)+' --maxConns ' + str(self.maxConns) + ' --dbpath ' + str(self.dbpath)
+        self.MongoQuery = ' --pidfilepath ' + str(self.pidPath) + \
+                          ' --maxConns ' + str(self.maxConns) + \
+                          ' --dbpath ' + str(self.dbpath)
         if self.noauth == 1:
             self.MongoQuery = self.MongoQuery + ' --noauth'
 
     def StartMongo(self):
         query = "bin/mongod "+self.MongoQuery
-        MongoProcess = subprocess.Popen([query], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        MongoProcess = subprocess.Popen([query], stdin=subprocess.PIPE,
+                                        stdout=subprocess.PIPE,
+                                        stderr=subprocess.PIPE,
+                                        shell=True)
         return MongoProcess
 
     def Start(self):
@@ -35,7 +40,8 @@ class MongoApp():
         SM.start()
 
 
-# Application structure: http://docs.python.org/2/library/tkinter.html#a-simple-hello-world-program
+# Application structure:
+# http://docs.python.org/2/library/tkinter.html#a-simple-hello-world-program
 class Application(Frame):
 
     Mongo = MongoApp(maxConns=100)
@@ -48,10 +54,14 @@ class Application(Frame):
         self.ConsoleLogFrame = Frame(master)
         self.ConsoleLogFrame.pack(expand=1, fill='both')
 
-        self.ActiveIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-active.gif"))
-        self.ErrorIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-error.gif"))
-        self.OffIconImage = ImageTk.PhotoImage(Image.open("assets/images/icon-off.gif"))
-        self.MongoDBLogo = ImageTk.PhotoImage(Image.open("assets/images/MongoDBLogo.gif"))
+        self.ActiveIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-active.gif"))
+        self.ErrorIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-error.gif"))
+        self.OffIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-off.gif"))
+        self.MongoDBLogo = ImageTk.PhotoImage(
+            Image.open("assets/images/MongoDBLogo.gif"))
 
         self.menubar = Menu(self)
 
@@ -101,8 +111,10 @@ class Application(Frame):
             self.StartButton["state"] = NORMAL
             self.IconPanel.config(image=self.ErrorIconImage)
             self.AppendLog("Error!\n", 'ErrorHead')
-            self.AppendLog("Mongo DB is not working, please check console log.\n", 'NotificationHead')
-        self.AppendLog("--------------------------------------------------\n", 'NotificationHead')
+            self.AppendLog("Mongo DB is not working, please check "
+                           "console log.\n", 'NotificationHead')
+        self.AppendLog("--------------------------------------------------\n",
+                       'NotificationHead')
 
     def StartServerMulti(self):
         self.StartButton["state"] = DISABLED
@@ -157,11 +169,16 @@ class Application(Frame):
         self.LogArea["bg"] = "black"
         self.LogArea["fg"] = "green"
         self.LogArea["highlightthickness"] = "0px"
-        self.LogArea.insert(INSERT, "Click to \"Start Mongo\" button for start the server.\nGitHub repository: http://git.io/MongoApp\n")
+        self.LogArea.insert(INSERT, "Click to \"Start Mongo\" button for start"
+                            " the server.\nGitHub repository: "
+                            "http://git.io/MongoApp\n")
         self.LogArea.pack(expand=1, fill='both')
 
-        self.LogArea.tag_config("NotificationHead", background="#f1c40f", foreground="#2c3e50")
-        self.LogArea.tag_config("ErrorHead", background="#e74c3c", foreground="#ffffff", font=tkFont.Font(weight='bold'))
+        self.LogArea.tag_config("NotificationHead", background="#f1c40f",
+                                foreground="#2c3e50")
+        self.LogArea.tag_config("ErrorHead", background="#e74c3c",
+                                foreground="#ffffff",
+                                font=tkFont.Font(weight='bold'))
 
     def AppendLog(self, logline, tag='None'):
         if tag == 'None':
