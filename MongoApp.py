@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from sys import path as sys_path
 from Tkinter import *
 import subprocess
@@ -194,8 +197,9 @@ class Application(Frame):
         self.master.quit()
 
 
-root = Tk()
-app = Application(master=root)
-app.master.title("MongoApp")
-app.master.geometry("640x480")
-app.mainloop()
+if __name__ == "__main__":
+    root = Tk()
+    app = Application(master=root)
+    app.master.title("MongoApp")
+    app.master.geometry("640x480")
+    app.mainloop()
