@@ -41,6 +41,8 @@
 
 <p>MongoApp is a GUI based tool that allows you to run MongoDB on the Mac. The app is developed using Python, TkInter and MongoDB.</p>
 
+<p>Current version: 0.2.1</p>
+
 <p><img src="https://raw2.github.com/yildizberkay/MongoApp/master/assets/images/MongoAppScreenshot.png" alt="MongoApp Screenshot"></p>
 
 <h2>
@@ -64,6 +66,10 @@ $ python MongoApp.py
 <p><a href="https://github.com/fotonauts/MongoHub-Mac">MongoHub Mac</a> is a open source project for Mac OS X. You can manage the database with GUI. </p>
 
 <p>You can check links section for moreover.</p>
+<h2>
+<a name="where-is-data-folder" class="anchor" href="#where-is-data-folder"><span class="octicon octicon-link"></span></a>Where is data folder?</h2>
+
+<p>MongoApp creates a folder under /Users/UserName at first time. All data files are stored under this folder.</p>
 
 <h2>
 <a name="mongodb-drivers" class="anchor" href="#mongodb-drivers"><span class="octicon octicon-link"></span></a>MongoDB Drivers</h2>
@@ -84,7 +90,15 @@ $ python MongoApp.py
 <li><a href="http://docs.mongodb.org">MongoDB Docs</a></li>
 <li><a href="http://www.mongodb.org/get-involved">MongoDB Community</a></li>
 <li><a href="http://docs.mongodb.org/ecosystem/tools/administration-interfaces/">MongoDB Admin UIs</a></li>
-</ul><h2>
+</ul>
+
+<h2>
+<a name="versioning" class="anchor" href="#versioning"><span class="octicon octicon-link"></span></a>Versioning</h2>
+
+<p><a target="_blank" href="http://semver.org">Semantic Versioning</a> is used in this project.</p>
+
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>MongoApp is released under the Apache License and MongoDB files (under bin/ folder) is released under the <a href="http://www.mongodb.org/about/licensing/">GNU AGPL v3.0</a>.</p>
@@ -95,16 +109,18 @@ $ python MongoApp.py
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-47717927-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47717927-1', 'yildizberkay.github.io');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>
