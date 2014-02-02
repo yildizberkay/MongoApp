@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from sys import path as sys_path
+from os import makedirs
+from os.path import expanduser, exists
 from Tkinter import *
 import subprocess
 import ttk
@@ -12,21 +14,23 @@ from PIL import ImageTk, Image
 import tkFont
 import webbrowser
 
+HomeFolder = expanduser("~")
+DATA_ROOT_FOLDER = HomeFolder+"/MongoAppData"
 
 class MongoApp():
 
-    pidPath = 'logs/mongo.pid'
+    pidPath = DATA_ROOT_FOLDER+'/logs/mongo.pid'
+    dbPath = DATA_ROOT_FOLDER+'/data/db'
 
-    def __init__(self, maxConns=10, dbpath='data/db', noauth=1):
+    def __init__(self, maxConns=10, noauth=1):
         self.maxConns = maxConns
-        self.dbpath = dbpath
         self.noauth = noauth
         self.CreateQuery()
 
     def CreateQuery(self):
         self.MongoQuery = ' --pidfilepath ' + str(self.pidPath) + \
                           ' --maxConns ' + str(self.maxConns) + \
-                          ' --dbpath ' + str(self.dbpath)
+                          ' --dbpath ' + str(self.dbPath)
         if self.noauth == 1:
             self.MongoQuery = self.MongoQuery + ' --noauth'
 
@@ -86,7 +90,7 @@ class Application(Frame):
         webbrowser.open('http://docs.mongodb.org/manual/')
 
     def OpenDBFolder(self):
-        subprocess.call(["open", "./data/db"])
+        subprocess.call(["open", DATA_ROOT_FOLDER+"/data"])
 
     def StartServer(self):
         self.MongoObject = self.Mongo.StartMongo()
@@ -114,7 +118,7 @@ class Application(Frame):
             self.StartButton["state"] = NORMAL
             self.IconPanel.config(image=self.ErrorIconImage)
             self.AppendLog("Error!\n", 'ErrorHead')
-            self.AppendLog("Mongo DB is not working, please check "
+            self.AppendLog("MongoDB is not working, please check "
                            "console log.\n", 'NotificationHead')
         self.AppendLog("--------------------------------------------------\n",
                        'NotificationHead')
@@ -122,7 +126,7 @@ class Application(Frame):
     def StartServerMulti(self):
         self.StartButton["state"] = DISABLED
         self.StopButton["state"] = NORMAL
-        self.AppendLog("Mongo DB is starting.\n", 'NotificationHead')
+        self.AppendLog("MongoDB is starting.\n", 'NotificationHead')
         self.SM = threading.Thread(target=self.StartServer, args=())
         self.SM.setDaemon(1)
         self.SM.start()
@@ -198,6 +202,12 @@ class Application(Frame):
 
 
 if __name__ == "__main__":
+    if not (exists(DATA_ROOT_FOLDER)):
+        makedirs(DATA_ROOT_FOLDER)
+        makedirs(DATA_ROOT_FOLDER+"/data")
+        makedirs(DATA_ROOT_FOLDER+"/data/db")
+        makedirs(DATA_ROOT_FOLDER+"/logs")
+
     root = Tk()
     app = Application(master=root)
     app.master.title("MongoApp")
