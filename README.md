@@ -22,6 +22,9 @@ $ python MongoApp.py
 
 You can check links section for moreover.
 
+##Where is data?
+MongoApp creates a folder under **/Users/<UserName>** at first time. All data files are stored under this folder.
+
 ##MongoDB Drivers
 You can find MongoDB driver list under [the docs](http://docs.mongodb.org/ecosystem/drivers/).
 
@@ -41,5 +44,4 @@ MongoApp is developed by [Berkay Yıldız](http://git.io/berkay)
 `<major>.<minor>.<patch>`
 
 ##License
-
 MongoApp is released under the Apache License and MongoDB files (under bin/ folder) is released under the [GNU AGPL v3.0](http://www.mongodb.org/about/licensing/).
