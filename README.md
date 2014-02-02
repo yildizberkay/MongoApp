@@ -22,7 +22,7 @@ $ python MongoApp.py
 
 You can check links section for moreover.
 
-##Where is data?
+##Where is data folder?
 MongoApp creates a folder under **/Users/<UserName>** at first time. All data files are stored under this folder.
 
 ##MongoDB Drivers
