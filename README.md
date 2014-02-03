@@ -8,7 +8,7 @@ Current version: 0.2.1
 ##Download .app file
 The latest version of MongoApp is available from SourceForge as [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.1.zip).
 
-Download [ZIP file](https://github.com/yildizberkay/MongoApp/raw/master/MongoApp.zip) and click the MongoApp icon.
+Download [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.1.zip) and click the MongoApp icon.
 
 ##Running from source
 ```
