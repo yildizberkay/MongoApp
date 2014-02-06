@@ -45,6 +45,3 @@ MongoApp is developed by [Berkay Yıldız](http://git.io/berkay)
 
 ##License
 MongoApp is released under the Apache License and MongoDB files (under bin/ folder) is released under the [GNU AGPL v3.0](http://www.mongodb.org/about/licensing/).
-
-<meta property="og:image" content="http://yildizberkay.github.io/MongoApp/assets/images/fb-image.jpg"/>
-
