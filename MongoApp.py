@@ -24,7 +24,7 @@ class MongoApp():
     pidPath = path_join(DATA_ROOT_FOLDER, 'logs', 'mongo.pid')
     dbPath = path_join(DATA_ROOT_FOLDER, 'data', 'db')
 
-    def __init__(self, maxConns=10, noauth=1):
+    def __init__(self, maxConns=10, noauth=True):
         self.maxConns = maxConns
         self.noauth = noauth
         self.CreateQuery()
@@ -33,8 +33,8 @@ class MongoApp():
         self.MongoQuery = ' --pidfilepath ' + str(self.pidPath) + \
                           ' --maxConns ' + str(self.maxConns) + \
                           ' --dbpath ' + str(self.dbPath)
-        if self.noauth == 1:
-            self.MongoQuery = self.MongoQuery + ' --noauth'
+        if self.noauth:
+            self.MongoQuery += ' --noauth'
 
     def StartMongo(self):
         query = "bin/mongod "+self.MongoQuery
