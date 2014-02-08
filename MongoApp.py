@@ -1,28 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from sys import path as sys_path
-from os import makedirs
-from os.path import expanduser, exists
-from Tkinter import *
 import subprocess
-import ttk
 import threading
+import tkFont
+import ttk
+import webbrowser
+
+from os import makedirs
+from os.path import exists, expanduser, join as path_join
+from sys import path as sys_path
+from Tkinter import *
 
 sys_path.append('libs')
 from PIL import ImageTk, Image
-import tkFont
-import webbrowser
+
 
 HomeFolder = expanduser("~")
-DATA_ROOT_FOLDER = HomeFolder+"/MongoAppData"
+DATA_ROOT_FOLDER = path_join(HomeFolder, "MongoAppData")
 
 class MongoApp():
 
-    pidPath = DATA_ROOT_FOLDER+'/logs/mongo.pid'
-    dbPath = DATA_ROOT_FOLDER+'/data/db'
+    pidPath = path_join(DATA_ROOT_FOLDER, 'logs', 'mongo.pid')
+    dbPath = path_join(DATA_ROOT_FOLDER, 'data', 'db')
 
-    def __init__(self, maxConns=10, noauth=1):
+    def __init__(self, maxConns=10, noauth=True):
         self.maxConns = maxConns
         self.noauth = noauth
         self.CreateQuery()
@@ -31,8 +33,8 @@ class MongoApp():
         self.MongoQuery = ' --pidfilepath ' + str(self.pidPath) + \
                           ' --maxConns ' + str(self.maxConns) + \
                           ' --dbpath ' + str(self.dbPath)
-        if self.noauth == 1:
-            self.MongoQuery = self.MongoQuery + ' --noauth'
+        if self.noauth:
+            self.MongoQuery += ' --noauth'
 
     def StartMongo(self):
         query = "bin/mongod "+self.MongoQuery
@@ -202,9 +204,7 @@ class Application(Frame):
 
 
 if __name__ == "__main__":
-    if not (exists(DATA_ROOT_FOLDER)):
-        makedirs(DATA_ROOT_FOLDER)
-        makedirs(DATA_ROOT_FOLDER+"/data")
+    if not exists(DATA_ROOT_FOLDER):
         makedirs(DATA_ROOT_FOLDER+"/data/db")
         makedirs(DATA_ROOT_FOLDER+"/logs")
 
