@@ -63,6 +63,15 @@ class Application(Frame):
         self.ConsoleLogFrame = Frame(master)
         self.ConsoleLogFrame.pack(expand=1, fill='both')
 
+        self.ActiveIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-active.gif"))
+        self.ErrorIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-error.gif"))
+        self.OffIconImage = ImageTk.PhotoImage(
+            Image.open("assets/images/icon-off.gif"))
+        self.MongoDBLogo = ImageTk.PhotoImage(
+            Image.open("assets/images/MongoDBLogo.gif"))
+
         self.menubar = Menu(self)
 
         MenuRoot = Menu(master, tearoff=0)
@@ -75,10 +84,6 @@ class Application(Frame):
 
         self.CreateWidgets()
         master.protocol("WM_DELETE_WINDOW", self.QuitEvent)
-
-    def GetImage(self, image):
-        return ImageTk.PhotoImage(Image.open(path_join('assets', 'images',
-                                                       image)))
 
     def LinkGitHubPage(self):
         webbrowser.open('https://github.com/yildizberkay/MongoApp')
@@ -97,13 +102,13 @@ class Application(Frame):
             self.AppendLog(Line)
 
             if str(self.MongoObject.poll()) == 'None':
-                self.IconPanel.config(image=self.GetImage('icon-active.gif'))
+                self.IconPanel.config(image=self.ActiveIconImage)
                 self.Status = 1
                 SStatus = 1
             elif str(self.MongoObject.poll()) == '100':
                 SStatus = 0
             else:
-                self.IconPanel.config(image=self.GetImage('icon-off.gif'))
+                self.IconPanel.config(image=self.OffIconImage)
 
             if not Line:
                 break
@@ -113,7 +118,7 @@ class Application(Frame):
         if SStatus == 0:
             self.StopButton["state"] = DISABLED
             self.StartButton["state"] = NORMAL
-            self.IconPanel.config(image=self.GetImage('icon-error.gif'))
+            self.IconPanel.config(image=self.ErrorIconImage)
             self.AppendLog("Error!\n", 'ErrorHead')
             self.AppendLog("MongoDB is not working, please check "
                            "console log.\n", 'NotificationHead')
@@ -160,13 +165,12 @@ class Application(Frame):
         self.OpenFolder["command"] = self.OpenDBFolder
         self.OpenFolder.pack({"side": "left"})
 
-        self.PoweredMongoPanel = Label(self,
-                                       image=self.GetImage('MongoDBLogo.gif'))
-        self.PoweredMongoPanel.image = self.GetImage('MongoDBLogo.gif')
+        self.PoweredMongoPanel = Label(self, image=self.MongoDBLogo)
+        self.PoweredMongoPanel.image = self.MongoDBLogo
         self.PoweredMongoPanel.pack({"side": "right"})
 
-        self.IconPanel = Label(self, image=self.GetImage('icon-off.gif'))
-        self.IconPanel.image = self.GetImage('icon-off.gif')
+        self.IconPanel = Label(self, image=self.OffIconImage)
+        self.IconPanel.image = self.OffIconImage
         self.IconPanel.pack({"side": "right"})
 
         self.LogArea = Text(self.ConsoleLogFrame)
