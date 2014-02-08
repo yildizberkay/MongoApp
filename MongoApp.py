@@ -3,7 +3,7 @@
 
 from sys import path as sys_path
 from os import makedirs
-from os.path import expanduser, exists
+from os.path import expanduser, exists, join as path_join
 from Tkinter import *
 import subprocess
 import ttk
@@ -15,12 +15,12 @@ import tkFont
 import webbrowser
 
 HomeFolder = expanduser("~")
-DATA_ROOT_FOLDER = HomeFolder+"/MongoAppData"
+DATA_ROOT_FOLDER = path_join(HomeFolder, "MongoAppData")
 
 class MongoApp():
 
-    pidPath = DATA_ROOT_FOLDER+'/logs/mongo.pid'
-    dbPath = DATA_ROOT_FOLDER+'/data/db'
+    pidPath = path_join(DATA_ROOT_FOLDER, 'logs', 'mongo.pid')
+    dbPath = path_join(DATA_ROOT_FOLDER, 'data', 'db')
 
     def __init__(self, maxConns=10, noauth=1):
         self.maxConns = maxConns
