@@ -1,14 +1,14 @@
 ##MongoApp
 MongoApp is a GUI based tool that allows you to run MongoDB on the Mac. The app is developed using Python, TkInter and MongoDB.
 
-Current version: 0.2.1
+Current version: 0.2.6
 
 ![MongoApp Screenshot](https://raw2.github.com/yildizberkay/MongoApp/master/assets/images/MongoAppScreenshot.png)
 
 ##Download .app file
-The latest version of MongoApp is available from SourceForge as [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.1.zip).
+The latest version of MongoApp is available from SourceForge as [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.6.zip).
 
-Download [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.1.zip) and click the MongoApp icon.
+Download [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.6.zip) and click the MongoApp icon.
 
 ##Running from source
 ```
@@ -32,6 +32,9 @@ You can find MongoDB driver list under [the docs](http://docs.mongodb.org/ecosys
 If you find a bug, please create [an issue](https://github.com/yildizberkay/MongoApp/issues).
 
 MongoApp is developed by [Berkay Yıldız](http://git.io/berkay)
+
+**Contributors**
+* [Onur Güzel](https://github.com/onurguzel)
 
 ##Links
 - [MongoDB Docs](http://docs.mongodb.org)

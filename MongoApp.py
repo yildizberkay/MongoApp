@@ -180,7 +180,7 @@ class Application(Frame):
         self.LogArea["highlightthickness"] = "0px"
         self.LogArea.insert(INSERT, "Click to \"Start Mongo\" button for start"
                             " the server.\nGitHub repository: "
-                            "http://git.io/MongoApp\n")
+                            "http://git.io/MongoApp\nMongoApp version: 0.2.6\n")
         self.LogArea.pack(expand=1, fill='both')
 
         self.LogArea.tag_config("NotificationHead", background="#f1c40f",
