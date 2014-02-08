@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from sys import path as sys_path
-from os import makedirs
-from os.path import expanduser, exists, join as path_join
-from Tkinter import *
 import subprocess
-import ttk
 import threading
+import tkFont
+import ttk
+import webbrowser
+
+from os import makedirs
+from os.path import exists, expanduser, join as path_join
+from sys import path as sys_path
+from Tkinter import *
 
 sys_path.append('libs')
 from PIL import ImageTk, Image
-import tkFont
-import webbrowser
+
 
 HomeFolder = expanduser("~")
 DATA_ROOT_FOLDER = path_join(HomeFolder, "MongoAppData")
