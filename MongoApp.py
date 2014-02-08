@@ -200,9 +200,7 @@ class Application(Frame):
 
 
 if __name__ == "__main__":
-    if not (exists(DATA_ROOT_FOLDER)):
-        makedirs(DATA_ROOT_FOLDER)
-        makedirs(DATA_ROOT_FOLDER+"/data")
+    if not exists(DATA_ROOT_FOLDER):
         makedirs(DATA_ROOT_FOLDER+"/data/db")
         makedirs(DATA_ROOT_FOLDER+"/logs")
 
