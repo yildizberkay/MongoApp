@@ -4,7 +4,7 @@ MongoApp is a GUI based tool that allows you to run MongoDB on the Mac. The app 
 Current version: 0.2.6<br />
 MongoDB version: 2.4.9
 
-![MongoApp Screenshot](https://raw2.github.com/yildizberkay/MongoApp/master/assets/images/MongoAppScreenshot.png)
+![MongoApp Screenshot](https://raw.githubusercontent.com/yildizberkay/MongoApp/master/assets/images/MongoAppScreenshot.png)
 
 ##Download .app file
 The latest version of MongoApp is available from SourceForge as [ZIP file](https://downloads.sourceforge.net/project/mongoapp/MongoApp-0.2.6.zip).
